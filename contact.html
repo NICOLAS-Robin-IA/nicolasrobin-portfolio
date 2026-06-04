@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<link rel="icon" type="image/x-icon" href="RN.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicolas Robin — Contact</title>
+<!-- Police Space Grotesk — nécessite une connexion internet
+     Si hors ligne, Helvetica Neue sera utilisée automatiquement -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+
+html, body {
+  width:100%; height:100%;
+  /* Police principale : Space Grotesk, sinon Helvetica, sinon Arial */
+  font-family:'Space Grotesk','Helvetica Neue',Arial,sans-serif;
+  background:#fff; color:#111;
+}
+
+body {
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+  overflow:hidden;
+  justify-content:center; /* ← centre la page verticalement */
+}
+
+/* ============================================================
+   BANDEAU — même hauteur que les pages photos
+   ← Modifie 549px pour changer la hauteur
+   ============================================================ */
+.bandeau {
+  flex:0 0 549px;          /* ← hauteur du bandeau (px) */
+  position:relative;
+  overflow:hidden;
+  border-top:1px solid #e0e0e0;
+  border-bottom:1px solid #e0e0e0;
+}
+
+/* ============================================================
+   NAVIGATION — identique aux autres pages
+   ← left:40px       : décalage depuis le bord gauche (px)
+   ← width:212px     : largeur du bloc menu (px)
+   ← padding-top:100px : espace avant Nicolas Robin (px)
+   ============================================================ */
+nav {
+  position:absolute;
+  top:0; left:40px;        /* ← décalage gauche (px) */
+  width:212px;             /* ← largeur menu (px) */
+  height:100%;
+  background:rgba(255,255,255,0.95);
+  padding-top:100px;       /* ← espace avant Nicolas Robin (px) */
+  padding-left:20px;
+  padding-right:16px;
+  padding-bottom:20px;
+  display:flex;
+  flex-direction:column;
+  z-index:10;
+  overflow:hidden;
+}
+
+/* ============================================================
+   NOM "Nicolas Robin"
+   ← font-size    : taille (px)
+   ← line-height  : interlignage (px)
+   ← margin-bottom: espace Robin → Photographe (px)
+   ============================================================ */
+.nom {
+  font-size:40px;          /* ← taille Nicolas Robin (px) */
+  line-height:42px;        /* ← interlignage (px) */
+  font-weight:700;
+  letter-spacing:-0.5px;
+  color:#111;
+  margin-bottom:6px;       /* ← espace Robin → Photographe (px) */
+}
+
+/* ============================================================
+   PHOTOGRAPHE
+   ← font-size    : taille (px)
+   ← color        : couleur (#999 = gris)
+   ← margin-bottom: espace Photographe → Home (px)
+   ============================================================ */
+.metier {
+  font-size:14px;          /* ← taille Photographe (px) */
+  font-weight:400;
+  color:#999;              /* ← couleur Photographe */
+  margin-bottom:60px;      /* ← espace Photographe → liens (px) */
+}
+
+/* ============================================================
+   LIENS DU MENU
+   ← font-size    : taille (px)
+   ← margin-bottom: espace entre chaque lien (px)
+   ← color #aaa   : couleur grise par défaut
+   ============================================================ */
+nav ul { list-style:none; }
+nav ul li { margin-bottom:1px; } /* ← espace entre liens (px) */
+nav ul li a {
+  text-decoration:none;
+  font-size:15px;          /* ← taille des liens (px) */
+  font-weight:400;
+  color:#aaa;              /* ← couleur grise par défaut */
+  transition:color 0.15s;
+}
+nav ul li a:hover  { color:#111; }
+nav ul li a.active { color:#111; font-weight:700; }
+
+/* ============================================================
+   FORMULAIRE — à droite de la nav
+   ← left:292px = 40 + 212 + 40 (espace entre nav et formulaire)
+   ← padding-top:100px = aligné avec Nicolas Robin
+   ============================================================ */
+.contenu {
+  position:absolute;
+  top:0;
+  left:292px;              /* ← position gauche du formulaire (px) */
+  right:0; bottom:0;
+  overflow-y:auto;
+  padding-top:100px;       /* ← espace avant "Contact" (px) */
+  padding-right:48px;
+  padding-bottom:20px;
+}
+
+/* ============================================================
+   TITRE "Contact"
+   ← font-size    : taille (px)
+   ← margin-bottom: espace sous le titre (px)
+   ← Modifie "Contact" dans le HTML pour changer le texte
+   ============================================================ */
+.contenu h1 {
+  font-size:40px;          /* ← taille titre Contact (px) */
+  line-height:42px;
+  font-weight:700;
+  letter-spacing:-0.5px;
+  color:#111;
+  margin-bottom:6px;
+}
+
+/* ============================================================
+   SOUS-TITRE "Photographe — Rhône Alpes"
+   ← font-size    : taille (px)
+   ← color        : couleur (#999 = gris)
+   ← margin-bottom: espace avant le formulaire (px)
+   ← Modifie le texte dans le HTML ci-dessous
+   ============================================================ */
+.sous-titre {
+  font-size:14px;          /* ← taille sous-titre (px) */
+  font-weight:400;
+  color:#999;
+  margin-bottom:40px;      /* ← espace sous-titre → formulaire (px) */
+}
+
+/* ============================================================
+   CHAMPS DU FORMULAIRE
+   ← margin-bottom dans .champ : espace entre champs (px)
+   ← font-size dans input/textarea : taille texte saisi (px)
+   ← Modifie les <label> pour changer les noms des champs
+   ← Modifie placeholder="..." pour changer les textes gris
+   ============================================================ */
+.champ { margin-bottom:18px; } /* ← espace entre chaque champ (px) */
+.champ label {
+  display:block;
+  font-size:10px;          /* ← taille des labels (px) */
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#999;
+  margin-bottom:5px;
+}
+.champ input, .champ textarea {
+  width:100%;
+  border:none;
+  border-bottom:1px solid #ddd;
+  padding:6px 0;
+  font-size:14px;          /* ← taille du texte dans les champs (px) */
+  font-family:inherit;
+  color:#111;
+  background:transparent;
+  outline:none;
+  transition:border-color 0.2s;
+}
+.champ input:focus, .champ textarea:focus { border-bottom-color:#111; }
+.champ textarea {
+  resize:none;
+  height:60px;             /* ← hauteur du champ Message (px) */
+}
+
+/* Anti-robot */
+.anti-robot { margin-bottom:16px; display:flex; align-items:center; gap:12px; }
+.anti-robot span { font-size:13px; color:#aaa; white-space:nowrap; }
+.anti-robot input {
+  width:50px; border:none; border-bottom:1px solid #ddd;
+  padding:5px 0; font-size:13px; font-family:inherit;
+  text-align:center; background:transparent; outline:none;
+}
+.anti-robot input:focus { border-bottom-color:#111; }
+
+.erreur { display:none; font-size:11px; color:#c00; margin-top:4px; }
+
+/* ============================================================
+   BOUTON ENVOYER
+   ← background : couleur (#111 = noir)
+   ← Modifie "Envoyer" dans le HTML pour changer le texte
+   ============================================================ */
+.btn-envoyer {
+  display:inline-block;
+  margin-top:6px; padding:9px 24px;
+  background:#111;         /* ← couleur fond bouton */
+  color:#fff;
+  font-size:12px; font-weight:500; letter-spacing:1px;
+  border:none; cursor:pointer;
+  font-family:inherit; transition:background 0.2s;
+}
+.btn-envoyer:hover { background:#444; }
+.confirmation { display:none; margin-top:12px; font-size:13px; color:#aaa; }
+
+/* ============================================================
+   TEXTE LÉGAL
+   ← padding:8px 68px : marges (px)
+   ← font-size        : taille (px)
+   ============================================================ */
+.texte-legal {
+  flex:0 0 auto;
+  padding:8px 68px;        /* ← marges texte légal */
+  font-size:9px;           /* ← taille texte légal (px) */
+  color:#bbb; line-height:1.4;
+}
+
+/* ============================================================
+   MOBILE PORTRAIT
+   ============================================================ */
+@media screen and (max-width:900px) and (orientation:portrait) {
+  html, body { height:auto; overflow-y:auto; }
+  body { display:block; justify-content:unset; }
+  .bandeau { display:flex; flex-direction:column; height:auto; overflow:visible; border:none; }
+  nav { position:relative; top:auto; left:auto; order:1; width:100%; height:auto; padding:14px 16px 10px 16px; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; overflow:visible; background:#fff; }
+  .nom { font-size:26px; line-height:28px; margin-bottom:2px; }
+  .metier { font-size:11px; margin-bottom:10px; }
+  nav ul { display:flex; flex-wrap:wrap; gap:0 14px; }
+  nav ul li { margin-bottom:4px; }
+  nav ul li a { font-size:13px; }
+  .contenu { order:2; position:relative; top:auto; left:auto; right:auto; bottom:auto; padding:16px; overflow-y:visible; }
+  .contenu h1 { font-size:24px; line-height:26px; }
+  .sous-titre { margin-bottom:16px; }
+  .texte-legal { font-size:8px; padding:6px 16px; }
+}
+
+/* ============================================================
+   MOBILE PAYSAGE — NE PAS TOUCHER
+   ============================================================ */
+@media screen and (max-width:900px) and (orientation:landscape) {
+  body { justify-content:center; overflow:hidden; }
+  .bandeau { flex:1 1 auto; min-height:0; }
+  nav { width:150px; padding-top:16px; padding-left:14px; }
+  .nom { font-size:18px; line-height:20px; margin-bottom:2px; }
+  .metier { font-size:10px; margin-bottom:12px; }
+  nav ul li { margin-bottom:4px; }
+  nav ul li a { font-size:11px; }
+  .contenu { left:180px; padding:16px 16px 16px 0; }
+  .contenu h1 { font-size:20px; line-height:22px; }
+  .sous-titre { margin-bottom:16px; }
+  .texte-legal { font-size:7px; padding:3px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bandeau">
+
+  <!-- NAVIGATION
+       ← Modifie le texte entre > et </a> pour renommer un lien -->
+  <nav>
+    <!-- ← Modifie "Nicolas" et "Robin" pour changer le nom -->
+    <div class="nom">Nicolas<br>Robin</div>
+    <!-- ← Modifie "Photographe" pour changer le métier -->
+    <div class="metier">Photographe</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu-01.html">Portrait</a></li>
+      <li><a href="menu-02.html">Industries</a></li>
+      <li><a href="menu-03.html">Chantier</a></li>
+      <li><a href="menu-04.html">Tournage</a></li>
+      <li><a href="menu-05.html">Architecture</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- FORMULAIRE DE CONTACT -->
+  <div class="contenu">
+
+    <!-- ← Modifie "Contact" pour changer le titre -->
+    <h1>Contact</h1>
+    <!-- ← Modifie ce texte pour changer le sous-titre -->
+    <p class="sous-titre">Photographe — Rhône Alpes</p>
+
+    <form id="form-contact" novalidate>
+
+      <!-- ← Modifie "Nom" (label) et "Votre nom" (placeholder) -->
+      <div class="champ">
+        <label for="nom-input">Nom</label>
+        <input type="text" id="nom-input" placeholder="Votre nom" required>
+      </div>
+
+      <!-- ← Modifie "E-mail" et "votre@email.com" -->
+      <div class="champ">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="votre@email.com" required>
+      </div>
+
+      <!-- ← Modifie "Sujet" et "Objet de votre message" -->
+      <div class="champ">
+        <label for="sujet">Sujet</label>
+        <input type="text" id="sujet" placeholder="Objet de votre message">
+      </div>
+
+      <!-- ← Modifie "Message" et "Votre message…" -->
+      <div class="champ">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Votre message…" required></textarea>
+      </div>
+
+      <!-- Question anti-robot automatique -->
+      <!-- HONEYPOT anti-spam : champ invisible, ne pas modifier -->
+      <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <div class="anti-robot">
+        <span>Combien font <strong id="nb1"></strong> + <strong id="nb2"></strong> ?</span>
+        <input type="number" id="reponse-robot" placeholder="?">
+      </div>
+      <div class="erreur" id="erreur-robot">Réponse incorrecte.</div>
+      <div class="erreur" id="erreur-champs">Merci de remplir tous les champs.</div>
+
+      <!-- ← Modifie "Envoyer" pour changer le texte du bouton -->
+      <button type="submit" class="btn-envoyer">Envoyer</button>
+      <div class="confirmation" id="confirmation">✓ Message envoyé. Je vous répondrai rapidement.</div>
+    </form>
+  </div>
+
+</div>
+
+<!-- ← Modifie le texte légal ci-dessous si besoin -->
+<div class="texte-legal">
+  ©2026 Nicolas Robin, tous droits réservés &nbsp;–&nbsp;
+  Toute reproduction, représentation, modification, publication,
+  adaptation totale ou partielle des éléments du site,
+  quel que soit le moyen ou le procédé utilisé, est interdite. &nbsp;–&nbsp; <a href="mentions-legales.html" style="color:#bbb;">Mentions légales</a>
+</div>
+
+<script>
+/* Anti-robot : génère automatiquement deux nombres aléatoires */
+var n1=Math.floor(Math.random()*9)+1, n2=Math.floor(Math.random()*9)+1, bonne=n1+n2;
+document.getElementById('nb1').textContent=n1;
+document.getElementById('nb2').textContent=n2;
+
+/* ← Remplace 'contact@nicolasrobin.fr' par ta vraie adresse email */
+document.getElementById('form-contact').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var nom=document.getElementById('nom-input').value.trim();
+  var email=document.getElementById('email').value.trim();
+  var message=document.getElementById('message').value.trim();
+  var rep=parseInt(document.getElementById('reponse-robot').value,10);
+  document.getElementById('erreur-robot').style.display='none';
+  document.getElementById('erreur-champs').style.display='none';
+  if (document.querySelector('[name=website]').value !== '') return; /* honeypot */
+  if (!nom||!email||!message){document.getElementById('erreur-champs').style.display='block';return;}
+  if (isNaN(rep)||rep!==bonne){
+    document.getElementById('erreur-robot').style.display='block';
+    n1=Math.floor(Math.random()*9)+1;n2=Math.floor(Math.random()*9)+1;bonne=n1+n2;
+    document.getElementById('nb1').textContent=n1;document.getElementById('nb2').textContent=n2;
+    document.getElementById('reponse-robot').value='';return;
+  }
+  var sujet=document.getElementById('sujet').value.trim()||'Message depuis le site';
+  var corps='Nom : '+nom+'\nEmail : '+email+'\n\n'+message;
+  window.location.href='mailto:contact@nicolasrobin.fr?subject='+encodeURIComponent(sujet)+'&body='+encodeURIComponent(corps);
+  document.getElementById('confirmation').style.display='block';
+  document.getElementById('form-contact').reset();
+});
+</script>
+</body>
+</html>

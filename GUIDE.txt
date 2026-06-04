@@ -1,0 +1,165 @@
+═══════════════════════════════════════════════════════════════
+   SITE NICOLAS ROBIN — GUIDE DE MODIFICATIONS
+   Version finale — Mai 2026
+═══════════════════════════════════════════════════════════════
+
+Ce site est composé de fichiers HTML purs, sans base de données
+ni serveur. Ouvre chaque fichier avec Notepad++ pour le modifier.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   STRUCTURE DES FICHIERS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+index.html       → Page d'accueil (Home)
+menu-01.html     → Page Menu 01
+menu-02.html     → Page Menu 02
+menu-03.html     → Page Menu 03
+menu-04.html     → Page Menu 04
+contact.html     → Page Contact avec formulaire
+
+photos/          → Dossier photos de la Home
+menu-01/         → Dossier photos du Menu 01
+menu-02/         → Dossier photos du Menu 02
+menu-03/         → Dossier photos du Menu 03
+menu-04/         → Dossier photos du Menu 04
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NOMMAGE DES PHOTOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Home    : photos/home-01.jpg  → photos/home-15.jpg
+Menu 01 : menu-01/menu1-01.jpg → menu-01/menu1-15.jpg
+Menu 02 : menu-02/menu2-01.jpg → menu-02/menu2-15.jpg
+Menu 03 : menu-03/menu3-01.jpg → menu-03/menu3-15.jpg
+Menu 04 : menu-04/menu4-01.jpg → menu-04/menu4-15.jpg
+
+Les photos doivent être en JPG.
+Format recommandé : hauteur 549px minimum, largeur libre.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CHANGER LE NOMBRE DE PHOTOS PAR MENU
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dans chaque fichier HTML, cherche (vers le bas du fichier) :
+
+   var NB_PHOTOS = 15;
+
+Change 15 par le nombre de photos que tu as dans ce dossier.
+Exemple : var NB_PHOTOS = 8;
+
+⚠ Chaque page a son propre NB_PHOTOS indépendant.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CHANGER LES NOMS DES MENUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dans CHAQUE fichier HTML, cherche le commentaire :
+   <!-- NOMS DES MENUS -->
+
+Tu verras :
+   <li><a href="menu-01.html">Menu 01</a></li>
+
+Modifie uniquement le texte entre > et </a>
+Exemple : <li><a href="menu-01.html">Architecture</a></li>
+
+⚠ Modifie le nom dans TOUS les fichiers HTML pour cohérence.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   REMPLACER LE LOGO (cercle NR)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dans chaque fichier HTML, cherche :
+   <div class="logo-cercle">NR</div>
+
+Remplace par :
+   <img src="logo.png" style="height:60px" alt="Nicolas Robin">
+
+Place ton fichier logo.png à la racine du site (même dossier
+que index.html).
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RÉGLAGES VISUELS (CSS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Tous les réglages sont en haut de chaque fichier HTML,
+dans la section <style>. Cherche les flèches ← pour
+repérer rapidement ce qui est modifiable.
+
+┌─────────────────────────────────────────────────────────┐
+│ ÉLÉMENT               │ CE QUI EST RÉGLABLE             │
+├─────────────────────────────────────────────────────────┤
+│ Logo                  │ flex: 0 0 140px  → hauteur zone │
+│ Bandeau photos        │ flex: 0 0 549px  → hauteur      │
+│ Images (même valeur)  │ height: 549px    → hauteur      │
+│ Nom "NICOLAS ROBIN"   │ font-size: 30px  → taille       │
+│ Largeur menu          │ width: 220px     → largeur      │
+│ Opacité fond menu     │ rgba(..., 0.95)  → 0=transparent│
+│ Décalage menu (gauche)│ left: 40px       → position     │
+│ Taille liens menu     │ font-size: 11px  → taille       │
+│ Couleur lien actif    │ color: #cc0000   → rouge        │
+│ Séparateur photos     │ gap: 1px         → épaisseur    │
+│ Ligne scroll          │ height: 1px      → épaisseur    │
+│ Couleur ligne scroll  │ background: #636371             │
+│ Longueur curseur rouge│ width: 60px      → longueur     │
+│ Épaisseur curseur     │ height: 10px     → épaisseur    │
+│ Couleur curseur       │ background: #cc0000             │
+│ Espace photos/ligne   │ margin-top: 4px  → espace       │
+│ Taille texte légal    │ font-size: 9px   → taille       │
+└─────────────────────────────────────────────────────────┘
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FONCTIONNALITÉS DU SITE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Défilement horizontal des photos
+   — Molette de la souris
+   — Cliquer-glisser sur les photos
+   — Glisser le curseur rouge sur la ligne
+   — Tactile sur mobile
+
+✓ Curseur rouge synchronisé avec la galerie
+   (slider natif du navigateur — fluide)
+
+✓ Clic droit sur une photo
+   Affiche : "This photo is Copyright © 2026
+              Nicolas Robin. All rights reserved."
+
+✓ Lien actif en rouge dans le menu selon la page
+
+✓ Formulaire de contact avec anti-robot
+   (question mathématique aléatoire)
+
+✓ Séparateur 1px entre chaque photo
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MISE EN LIGNE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Transfère l'intégralité du contenu du dossier nicolas-robin-site
+sur ton hébergeur via FTP (FileZilla par exemple).
+Aucune configuration serveur nécessaire — le site est 100% HTML.
+
+Pour l'email du formulaire contact, ouvre contact.html
+et cherche :
+   mailto:contact@nicolasrobin.fr
+Remplace par ta vraie adresse email.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAVIGATEURS COMPATIBLES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Chrome / Edge (recommandé)
+✓ Firefox
+✓ Safari
+✓ Mobile iOS et Android
+
+═══════════════════════════════════════════════════════════════
