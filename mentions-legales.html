@@ -2,7 +2,15 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+
+/* Optimisation fluidité scroll et rendu GPU */
+.galerie-scroll { scroll-behavior:smooth; }
+.galerie img { will-change:transform; transform:translateZ(0); }
+</style>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/x-icon" href="RN.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +27,7 @@ nav ul{list-style:none;}
 nav ul li{margin-bottom:1px;}
 nav ul li a{text-decoration:none;font-size:15px;font-weight:400;color:#aaa;transition:color 0.15s;}
 nav ul li a:hover{color:#111;}
+nav ul li a.active{color:#111;font-weight:700;}
 .contenu{position:absolute;top:0;left:292px;right:0;bottom:0;overflow-y:auto;padding-top:100px;padding-right:48px;padding-bottom:20px;}
 .contenu h1{font-size:40px;line-height:42px;font-weight:700;letter-spacing:-0.5px;color:#111;margin-bottom:0.1px;}
 .sous-titre{font-size:14px;font-weight:400;color:#111;margin-bottom:40px;}
@@ -82,7 +91,7 @@ p{font-size:14px;line-height:1.8;color:#444;margin-bottom:8px;}
     <h2>Propriété intellectuelle</h2>
     <p>L'ensemble des photographies et éléments graphiques sont la propriété exclusive de Nicolas Robin. Toute reproduction sans autorisation écrite est interdite.</p>
     <h2>Données personnelles (RGPD)</h2>
-    <p>Ce site ne collecte aucun cookie. Aucune donnée n'est stockée sur nos serveurs. La police Space Grotesk est chargée depuis Google Fonts.</p>
+    <p>Ce site ne collecte aucun cookie. Aucune donnée n'est stockée sur nos serveurs.</p>
     <a href="contact.html" class="lien-contact">→ Formulaire de contact</a>
   </div>
 </div>

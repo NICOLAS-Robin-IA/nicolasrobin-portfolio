@@ -2,7 +2,17 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ← Polices Space Grotesk hébergées en local (dossier fonts/)
+   Fonctionne sans connexion internet */
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+
+/* Optimisation fluidité scroll et rendu GPU */
+.galerie-scroll { scroll-behavior:smooth; }
+.galerie img { will-change:transform; transform:translateZ(0); }
+</style>
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <link rel="icon" type="image/x-icon" href="RN.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -187,22 +197,59 @@ nav ul li a.active { color:#111; font-weight:700; }
   ©2026 Nicolas Robin, tous droits réservés &nbsp;–&nbsp;
   Toute reproduction, représentation, modification, publication,
   adaptation totale ou partielle des éléments du site,
-  quel que soit le moyen ou le procédé utilisé, est interdite.
+  quel que soit le moyen ou le procédé utilisé, est interdite. &nbsp;–&nbsp; <a href="mentions-legales.html" style="color:#bbb;text-decoration:none;">Mentions légales</a>
 </div>
 
 <div id="overlay-cr">This photo is Copyright © 2026<br>Nicolas Robin. All rights reserved.</div>
 
 <script>
 /* ←←← ADAPTER PAR PAGE ←←← */
-var DOSSIER='menu-03', PREFIXE='menu3', NB_PHOTOS=15;
+var DOSSIER='menu-03', PREFIXE='menu3', NB_PHOTOS=24;
 
 var gal=document.getElementById('galerie');
+var imgs=[];
+
 for(var i=1;i<=NB_PHOTOS;i++){
   var img=document.createElement('img');
   img.src=DOSSIER+'/'+PREFIXE+'-'+(i<10?'0':'')+i+'.webp';
-  img.alt=PREFIXE+' '+i; img.draggable=false; gal.appendChild(img);
+  img.alt=PREFIXE+' '+i;
+  img.draggable=false;
+  img.loading="lazy";
+  img.decoding="async";
+  img.fetchPriority="low";
+  gal.appendChild(img);
+  imgs.push(img);
 }
+
 var gs=document.getElementById('gs');
+
+/* Moteur intelligent de priorité de chargement */
+let lastScroll=0;
+function smartEngine(){
+  const direction=gs.scrollLeft>lastScroll?1:-1;
+  lastScroll=gs.scrollLeft;
+  const index=Math.floor(gs.scrollLeft/window.innerWidth);
+  for(let i=0;i<imgs.length;i++){
+    const img=imgs[i];
+    if(Math.abs(i-index)<=2){ img.loading="eager"; img.fetchPriority="high"; }
+    if(direction===1&&i===index+3){ img.loading="eager"; img.fetchPriority="high"; }
+    if(direction===-1&&i===index-3){ img.loading="eager"; img.fetchPriority="high"; }
+  }
+}
+
+/* Intersection Observer — charge en avance à 350px */
+const observer=new IntersectionObserver((entries)=>{
+  for(const e of entries){
+    if(e.isIntersecting){
+      const img=e.target;
+      img.loading="eager"; img.fetchPriority="high";
+      observer.unobserve(img);
+    }
+  }
+},{root:gs, rootMargin:"350px", threshold:0.1});
+
+imgs.forEach(img=>observer.observe(img));
+gs.addEventListener('scroll',smartEngine,{passive:true});
 gs.addEventListener('wheel',function(e){e.preventDefault();gs.scrollLeft+=e.deltaY*2.5;},{passive:false});
 var drag=false,sx=0,sl=0;
 gs.addEventListener('mousedown',function(e){if(e.button!==0)return;drag=true;sx=e.pageX;sl=gs.scrollLeft;gs.style.cursor="url('cursor-NR.png') 64 64,grabbing";e.preventDefault();});
