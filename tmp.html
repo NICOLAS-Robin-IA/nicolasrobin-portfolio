@@ -2,27 +2,33 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="RN.ico">
+<title>Nicolas Robin — Home</title>
 <style>
-/* ← Polices Space Grotesk hébergées en local (dossier fonts/)
-   Fonctionne sans connexion internet */
+/* Polices Space Grotesk hébergées en local (dossier fonts/) */
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
 
-/* Optimisation fluidité scroll et rendu GPU */
-.galerie-scroll { scroll-behavior:smooth; }
-.galerie img { will-change:transform; transform:translateZ(0); }
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 html,body { width:100%; height:100%; font-family:'Space Grotesk','Helvetica Neue',sans-serif; background:#fff; color:#111; }
 body { display:flex; flex-direction:column; height:100vh; overflow:hidden; justify-content:center; }
 
-/* BANDEAU PHOTOS
-   ← 549px : hauteur des photos desktop */
+/* Optimisation fluidité scroll et rendu GPU */
+.galerie-scroll { scroll-behavior:smooth; }
+.galerie img { will-change:transform; transform:translateZ(0); }
+
+/* Hint rotation — caché par défaut, visible uniquement en mobile portrait via media query */
+.hint-rotate { display:none; }
+
+/* BANDEAU PHOTOS — 549px : hauteur des photos desktop */
 .bandeau { flex:0 0 549px; position:relative; overflow:hidden; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; }
 .galerie-scroll { position:absolute; inset:0; overflow-x:scroll; overflow-y:hidden; cursor:url('cursor-NR.png') 64 64,grab; scrollbar-width:none; -ms-overflow-style:none; }
 .galerie-scroll::-webkit-scrollbar { display:none; }
-.galerie { display:flex; flex-wrap:nowrap; height:100%; width:max-content; }
-.galerie img { height:549px; width:auto; flex-shrink:0; display:block; user-select:none; -webkit-user-drag:none; border-right:1px solid #e0e0e0; }
+.galerie { display:flex; flex-wrap:nowrap; height:100%; width:max-content; gap:1px; background:#e0e0e0; }
+.galerie img { height:549px; width:auto; flex-shrink:0; display:block; user-select:none; -webkit-user-drag:none; }
 
 /* ════════════════════════════════════════
    NAV — superposée sur les photos (desktop)
@@ -61,8 +67,8 @@ nav {
    ← margin-bottom : espace avant Home   [M-C] */
 .metier {
   font-size:14px;
-  font-weight:400;             /* PAS GRAS */
-  color:#111;                  /* EN NOIR */
+  font-weight:400;
+  color:#111;
   margin-bottom:60px;          /* [M-C] Photographe → liens */
 }
 
@@ -128,6 +134,28 @@ nav ul li a.active { color:#111; font-weight:700; }
   .galerie img { height:200px; width:auto; }
 
   .texte-legal { font-size:8px; padding:6px 16px; }
+
+  /* Hint "tourner le téléphone" — sous le menu, au-dessus de la galerie */
+  .hint-rotate {
+    order:2;
+    display:flex; align-items:center; gap:10px;
+    padding:10px 16px;
+    border-bottom:1px solid #e0e0e0;
+    background:#fff;
+    font-size:11px; color:#888;
+  }
+  .hint-rotate svg {
+    flex-shrink:0;
+    animation:rotate-hint 2s ease-in-out infinite;
+  }
+  @keyframes rotate-hint {
+    0%   { transform:rotate(0deg); }
+    40%  { transform:rotate(90deg); }
+    60%  { transform:rotate(90deg); }
+    100% { transform:rotate(0deg); }
+  }
+  /* La galerie passe en order:3 pour laisser la place au hint */
+  .galerie-scroll { order:3; }
 }
 
 /* ════════════════════════════════════════
@@ -147,7 +175,6 @@ nav ul li a.active { color:#111; font-weight:700; }
 
   .galerie img { height:100dvh; width:auto; }
 
-  /* Nav desktop superposée — identique desktop */
   nav {
     position:absolute; top:0; left:40px;
     width:212px; height:100%;
@@ -163,14 +190,15 @@ nav ul li a.active { color:#111; font-weight:700; }
   nav ul li a { font-size:12px; }
 
   .texte-legal { display:none; }
+
+  /* Curseur custom sous le doigt lors du drag (paysage mobile) */
+  #cursor-touch {
+    display:none; position:fixed; pointer-events:none; z-index:9998;
+    width:64px; height:64px;
+    transform:translate(-50%,-50%);
+  }
 }
 </style>
-
-<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
-<link rel="icon" type="image/x-icon" href="RN.ico">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nicolas Robin — Home</title>
-
 </head>
 <body>
 
@@ -182,25 +210,39 @@ nav ul li a.active { color:#111; font-weight:700; }
     <div class="nom">Nicolas<br>Robin</div>
     <div class="metier">Photographe</div>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="menu-01.html">Portrait</a></li>
-      <li><a href="menu-02.html">Industries</a></li>
-      <li><a href="menu-03.html">Chantier</a></li>
-      <li><a href="menu-04.html">Tournage</a></li>
-      <li><a href="menu-05.html">Architecture</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a class='active' href='/'>Home</a></li>
+      <li><a href='/menu-01'>Portrait</a></li>
+      <li><a href='/menu-02'>Industries</a></li>
+      <li><a href='/menu-03'>Chantier</a></li>
+      <li><a href='/menu-04'>Tournage</a></li>
+      <li><a href='/menu-05'>Architecture</a></li>
+      <li><a href='/contact'>Contact</a></li>
     </ul>
   </nav>
+
+  <!-- Hint rotation — visible uniquement en mobile portrait (CSS order:2) -->
+  <div class="hint-rotate">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Téléphone -->
+      <rect x="7" y="3" width="8" height="13" rx="1.5" stroke="#888" stroke-width="1.4"/>
+      <circle cx="11" cy="14.2" r="0.8" fill="#888"/>
+      <!-- Flèche de rotation -->
+      <path d="M3.5 7 A8 8 0 0 1 18.5 7" stroke="#888" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <polyline points="16,4.5 18.5,7 16,9.5" stroke="#888" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Tournez votre téléphone pour voir les photos
+  </div>
 </div>
 
 <div class="texte-legal">
   ©2026 Nicolas Robin, tous droits réservés &nbsp;–&nbsp;
   Toute reproduction, représentation, modification, publication,
   adaptation totale ou partielle des éléments du site,
-  quel que soit le moyen ou le procédé utilisé, est interdite. &nbsp;–&nbsp; <a href="mentions-legales.html" style="color:#bbb;text-decoration:none;">Mentions légales</a>
+  quel que soit le moyen ou le procédé utilisé, est interdite. &nbsp;–&nbsp; <a href='/mentions-legales' style='color:#bbb;text-decoration:none;'>Mentions légales</a>
 </div>
 
 <div id="overlay-cr">This photo is Copyright © 2026<br>Nicolas Robin. All rights reserved.</div>
+<img id="cursor-touch" src="cursor-NR.png" alt="">
 
 <script>
 /* ←←← ADAPTER PAR PAGE ←←← */
@@ -223,8 +265,6 @@ for(var i=1;i<=NB_PHOTOS;i++){
 
 var gs=document.getElementById('gs');
 
-
-
 /* Intersection Observer — précharge les images à 350px avant l'écran */
 const observer=new IntersectionObserver((entries)=>{
   for(const e of entries){
@@ -245,8 +285,31 @@ gs.addEventListener('mousedown',function(e){if(e.button!==0)return;drag=true;sx=
 document.addEventListener('mouseup',function(){drag=false;gs.style.cursor="url('cursor-NR.png') 64 64,grab";});
 document.addEventListener('mousemove',function(e){if(!drag)return;gs.scrollLeft=sl-(e.pageX-sx)*1.2;});
 var tx=0,tl=0;
-gs.addEventListener('touchstart',function(e){tx=e.touches[0].pageX;tl=gs.scrollLeft;},{passive:true});
-gs.addEventListener('touchmove',function(e){gs.scrollLeft=tl-(e.touches[0].pageX-tx)*1.2;},{passive:true});
+var ctElem=document.getElementById('cursor-touch');
+
+/* Curseur touch — actif uniquement en mode paysage sur la galerie (pas sur le menu) */
+function isLandscapeMobile(){ return window.innerWidth>window.innerHeight && window.innerHeight<=500; }
+function isTouchOnGallery(e){ return e.target.closest && e.target.closest('#gs'); }
+
+gs.addEventListener('touchstart',function(e){
+  tx=e.touches[0].pageX; tl=gs.scrollLeft;
+  if(isLandscapeMobile()){
+    ctElem.style.display='block';
+    ctElem.style.left=e.touches[0].clientX+'px';
+    ctElem.style.top=e.touches[0].clientY+'px';
+  }
+},{passive:true});
+
+gs.addEventListener('touchmove',function(e){
+  gs.scrollLeft=tl-(e.touches[0].pageX-tx)*1.2;
+  if(isLandscapeMobile()){
+    ctElem.style.left=e.touches[0].clientX+'px';
+    ctElem.style.top=e.touches[0].clientY+'px';
+  }
+},{passive:true});
+
+gs.addEventListener('touchend',function(){ ctElem.style.display='none'; },{passive:true});
+gs.addEventListener('touchcancel',function(){ ctElem.style.display='none'; },{passive:true});
 var ov=document.getElementById('overlay-cr');
 document.addEventListener('contextmenu',function(e){
   e.preventDefault();
