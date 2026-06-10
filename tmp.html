@@ -17,7 +17,6 @@ html,body { width:100%; height:100%; font-family:'Space Grotesk','Helvetica Neue
 body { display:flex; flex-direction:column; height:100vh; overflow:hidden; justify-content:center; }
 
 /* Optimisation fluidité scroll et rendu GPU */
-.galerie-scroll { scroll-behavior:smooth; }
 .galerie img { will-change:transform; transform:translateZ(0); }
 
 /* Hint rotation — caché par défaut, visible uniquement en mobile portrait via media query */
@@ -25,9 +24,9 @@ body { display:flex; flex-direction:column; height:100vh; overflow:hidden; justi
 
 /* BANDEAU PHOTOS — 549px : hauteur des photos desktop */
 .bandeau { flex:0 0 549px; position:relative; overflow:hidden; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; }
-.galerie-scroll { position:absolute; inset:0; overflow-x:scroll; overflow-y:hidden; cursor:url('cursor-NR.png') 64 64,grab; scrollbar-width:none; -ms-overflow-style:none; }
+.galerie-scroll { position:absolute; inset:0; overflow-x:scroll; overflow-y:hidden; scroll-behavior:smooth; cursor:url('cursor-NR.png') 64 64,grab; scrollbar-width:none; -ms-overflow-style:none; }
 .galerie-scroll::-webkit-scrollbar { display:none; }
-.galerie { display:flex; flex-wrap:nowrap; height:100%; width:max-content; gap:1px; background:#e0e0e0; }
+.galerie { display:flex; flex-wrap:nowrap; height:100%; width:max-content; gap:2px; /* [G] espace entre photos — modifier ici */ background:#e0e0e0; }
 .galerie img { height:549px; width:auto; flex-shrink:0; display:block; user-select:none; -webkit-user-drag:none; }
 
 /* ════════════════════════════════════════
@@ -146,22 +145,26 @@ nav ul li a.active { color:#111; font-weight:700; }
     align-items:center;
     justify-content:center;
     gap:8px;
-    height:110px;
-    border-top:1px solid #e0e0e0;
+    height:150px;
+    border-top:1px solid #272626;
     background:#fff;
     font-size:11px;
-    color:#888;
+    color:#202020;
     letter-spacing:0.03em;
   }
 
-  /* Scène d'animation : téléphone + main + flèche */
+  /* Scène d'animation : téléphone + main + flèche
+     ← width/height de .scene  : taille globale de l'animation  [A-SIZE]
+     ← width/height du .phone  : taille du téléphone SVG         [A-PHONE]
+     ← width/height du .arrow  : taille de la flèche SVG         [A-ARROW] */
   .hint-rotate .scene {
     position:relative;
-    width:80px;
-    height:44px;
+    width:80px;   /* [A-SIZE] largeur scène — augmenter pour grossir */
+    height:44px;  /* [A-SIZE] hauteur scène — augmenter proportionnellement */
   }
 
-  /* Téléphone SVG animé */
+  /* Téléphone SVG animé
+     ← width/height dans le HTML : taille du téléphone  [A-PHONE] */
   .hint-rotate .phone {
     position:absolute;
     left:50%; top:50%;
@@ -180,7 +183,8 @@ nav ul li a.active { color:#111; font-weight:700; }
     opacity:0;
   }
 
-  /* Flèche courbe animée */
+  /* Flèche courbe animée
+     ← width/height dans le HTML : taille de la flèche  [A-ARROW] */
   .hint-rotate .arrow {
     position:absolute;
     left:50%; top:50%;
@@ -247,10 +251,14 @@ nav ul li a.active { color:#111; font-weight:700; }
 
   .texte-legal { display:none; }
 
-  /* Curseur custom sous le doigt lors du drag (paysage mobile) */
+  /* Curseur custom sous le doigt lors du drag (paysage mobile)
+     ← width  : largeur du curseur en pixels   [C-W]
+     ← height : hauteur du curseur en pixels   [C-H]
+     Garder width et height identiques si cursor-NR.png est carré */
   #cursor-touch {
     display:none; position:fixed; pointer-events:none; z-index:9998;
-    width:64px; height:64px;
+    width:100px;   /* [C-W] — augmenter pour un curseur plus grand */
+    height:100px;  /* [C-H] — augmenter pour un curseur plus grand */
     transform:translate(-50%,-50%);
   }
 }
@@ -299,7 +307,7 @@ nav ul li a.active { color:#111; font-weight:700; }
       </svg>
 
     </div>
-    <span>Passez en mode paysage pour voir les photos</span>
+    <span><strong>Passez en mode paysage</strong></span>
   </div>
 </div>
 
