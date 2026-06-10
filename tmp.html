@@ -137,7 +137,7 @@ nav ul li a.active { color:#111; font-weight:700; }
   /* Galerie reste en order:2, hint en order:3 (sous la galerie) */
   .galerie-scroll { order:2; }
 
-  /* Bandeau hint — 110px, sous la galerie */
+  /* Bandeau hint — 150px, sous la galerie */
   .hint-rotate {
     order:3;
     display:flex;
@@ -145,10 +145,10 @@ nav ul li a.active { color:#111; font-weight:700; }
     align-items:center;
     justify-content:center;
     gap:8px;
-    height:150px;
+    height:180px;
     border-top:1px solid #272626;
     background:#fff;
-    font-size:11px;
+    font-size:16px;
     color:#202020;
     letter-spacing:0.03em;
   }
@@ -257,8 +257,8 @@ nav ul li a.active { color:#111; font-weight:700; }
      Garder width et height identiques si cursor-NR.png est carré */
   #cursor-touch {
     display:none; position:fixed; pointer-events:none; z-index:9998;
-    width:100px;   /* [C-W] — augmenter pour un curseur plus grand */
-    height:100px;  /* [C-H] — augmenter pour un curseur plus grand */
+    width:250px;   /* [C-W] — augmenter pour un curseur plus grand */
+    height:250px;  /* [C-H] — augmenter pour un curseur plus grand */
     transform:translate(-50%,-50%);
   }
 }
@@ -274,7 +274,7 @@ nav ul li a.active { color:#111; font-weight:700; }
     <div class="nom">Nicolas<br>Robin</div>
     <div class="metier">Photographe</div>
     <ul>
-      <li><a class='active' href='/'>Home</a></li>
+      <li><a class='active' href='/'>TMP</a></li>
       <li><a href='/menu-01'>Portrait</a></li>
       <li><a href='/menu-02'>Industries</a></li>
       <li><a href='/menu-03'>Chantier</a></li>
