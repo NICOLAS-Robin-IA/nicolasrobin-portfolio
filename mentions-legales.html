@@ -2,71 +2,134 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="RN.ico">
+<title>Nicolas Robin — Mentions légales</title>
 <style>
+/* ── Polices locales ── */
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
 
-/* Optimisation fluidité scroll et rendu GPU */
-.galerie-scroll { scroll-behavior:smooth; }
-.galerie img { will-change:transform; transform:translateZ(0); }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html,body{width:100%;height:100%;font-family:'Space Grotesk','Helvetica Neue',sans-serif;background:#fff;color:#111;}
-body{display:flex;flex-direction:column;height:100vh;overflow:hidden;justify-content:center;}
-.bandeau{flex:0 0 549px;position:relative;overflow:hidden;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;}
-nav{position:absolute;top:0;left:40px;width:212px;height:100%;background:rgba(255,255,255,0.95);padding-top:100px;padding-left:20px;padding-right:16px;padding-bottom:20px;display:flex;flex-direction:column;z-index:10;overflow:hidden;}
-.nom{font-size:40px;line-height:42px;font-weight:700;letter-spacing:-0.5px;color:#111;margin-bottom:0.1px;}
-.metier{font-size:14px;font-weight:400;color:#111;margin-bottom:60px;}
-nav ul{list-style:none;}
-nav ul li{margin-bottom:1px;}
-nav ul li a{text-decoration:none;font-size:15px;font-weight:400;color:#aaa;transition:color 0.15s;}
-nav ul li a:hover{color:#111;}
-nav ul li a.active{color:#111;font-weight:700;}
-.contenu{position:absolute;top:0;left:292px;right:0;bottom:0;overflow-y:auto;padding-top:100px;padding-right:48px;padding-bottom:20px;}
-.contenu h1{font-size:40px;line-height:42px;font-weight:700;letter-spacing:-0.5px;color:#111;margin-bottom:0.1px;}
-.sous-titre{font-size:14px;font-weight:400;color:#111;margin-bottom:40px;}
-h2{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#aaa;margin:24px 0 8px 0;}
-p{font-size:14px;line-height:1.8;color:#444;margin-bottom:8px;}
-.lien-contact{display:inline-block;margin-top:32px;font-size:15px;color:#aaa;text-decoration:none;transition:color 0.15s;}
-.lien-contact:hover{color:#111;}
-.texte-legal{flex:0 0 auto;padding:8px 68px;font-size:9px;color:#bbb;line-height:1.4;}
-@media screen and (max-width:900px) and (orientation:portrait){
-  html,body{height:auto;overflow-y:auto;overflow-x:hidden;}
-  body{display:block;}
-  .bandeau{display:flex;flex-direction:column;height:auto;overflow:visible;border:none;}
-  nav{position:relative;top:auto;left:auto;order:1;width:100%;height:auto;padding:14px 16px 10px 16px;border-top:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;overflow:visible;background:#fff;}
-  .nom{font-size:26px;line-height:28px;margin-bottom:2px;}
-  .metier{font-size:11px;margin-bottom:10px;}
-  nav ul{display:flex;flex-wrap:wrap;gap:0 14px;}
-  nav ul li{margin-bottom:4px;}
-  nav ul li a{font-size:13px;}
-  .contenu{order:2;position:relative;top:auto;left:auto;right:auto;bottom:auto;padding:16px;overflow-y:visible;}
-  .contenu h1{font-size:24px;line-height:26px;}
-  .sous-titre{margin-bottom:16px;}
-  .texte-legal{font-size:8px;padding:6px 16px;}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html,body { width:100%; height:100%; font-family:'Space Grotesk','Helvetica Neue',sans-serif; background:#fff; color:#111; }
+body { display:flex; flex-direction:column; height:100vh; overflow:hidden; justify-content:center; }
+
+.bandeau { flex:0 0 549px; position:relative; overflow:hidden; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; }
+nav { position:absolute; top:0; left:40px; width:212px; height:100%; background:rgba(255,255,255,0.95); padding-top:100px; padding-left:20px; padding-right:16px; padding-bottom:20px; display:flex; flex-direction:column; z-index:10; overflow:hidden; }
+.nom { font-size:40px; line-height:42px; font-weight:700; letter-spacing:-0.5px; color:#111; margin-bottom:0.1px; }
+.metier { font-size:14px; font-weight:400; color:#111; margin-bottom:60px; }
+nav ul { list-style:none; }
+nav ul li { margin-bottom:1px; }
+nav ul li a { text-decoration:none; font-size:15px; font-weight:400; color:#aaa; transition:color 0.15s; }
+nav ul li a:hover { color:#111; }
+nav ul li a.active { color:#111; font-weight:700; }
+
+.contenu { position:absolute; top:0; left:292px; right:0; bottom:0; overflow-y:auto; padding-top:100px; padding-right:48px; padding-bottom:20px; }
+.contenu h1 { font-size:40px; line-height:42px; font-weight:700; letter-spacing:-0.5px; color:#111; margin-bottom:0.1px; }
+.sous-titre { font-size:14px; font-weight:400; color:#111; margin-bottom:40px; }
+h2 { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#aaa; margin:24px 0 8px 0; }
+p { font-size:14px; line-height:1.8; color:#444; margin-bottom:8px; }
+.lien-contact { display:inline-block; margin-top:32px; font-size:15px; color:#aaa; text-decoration:none; transition:color 0.15s; }
+.lien-contact:hover { color:#111; }
+
+.texte-legal { flex:0 0 auto; padding:8px 68px; font-size:9px; color:#bbb; line-height:1.4; }
+
+/* ════════════════════════════════════════
+   OVERLAY ROTATION — paysage mobile
+   ════════════════════════════════════════ */
+#overlay-rotate {
+  display:none;
+  position:fixed; inset:0; z-index:20000;
+  background:#fff;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
 }
-@media screen and (orientation:landscape) and (max-height:500px){
-  html{height:100dvh;}
-  body{height:100dvh;overflow:hidden;flex-direction:column;justify-content:flex-start;}
-  .bandeau{flex:0 0 100dvh;height:100dvh;width:100vw;border:none;position:relative;overflow:hidden;}
-  nav{position:absolute;top:0;left:40px;width:212px;height:100%;background:rgba(255,255,255,0.95);padding-top:20px;padding-left:20px;padding-right:16px;padding-bottom:20px;z-index:10;overflow:hidden;}
-  .nom{font-size:20px;line-height:22px;margin-bottom:3px;}
-  .metier{font-size:10px;margin-bottom:18px;}
-  nav ul li{margin-bottom:10px;}
-  nav ul li a{font-size:12px;}
-  .contenu{left:220px;padding:20px 20px 20px 0;}
-  .contenu h1{font-size:20px;line-height:22px;}
-  .texte-legal{display:none;}
+#overlay-rotate .scene { position:relative; width:80px; height:44px; }
+#overlay-rotate .phone { position:absolute; left:50%; top:50%; transform-origin:center center; transform:translate(-50%,-50%) rotate(0deg); animation:or-phone 2.8s ease-in-out infinite; }
+#overlay-rotate .hand  { position:absolute; left:50%; top:50%; transform-origin:center center; transform:translate(-20%,10%) rotate(0deg); animation:or-hand 2.8s ease-in-out infinite; opacity:0; }
+#overlay-rotate .arrow { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); opacity:0; animation:or-arrow 2.8s ease-in-out infinite; }
+@keyframes or-phone {
+  0%   { transform:translate(-50%,-50%) rotate(0deg); }
+  15%  { transform:translate(-50%,-50%) rotate(0deg); }
+  55%  { transform:translate(-50%,-50%) rotate(90deg); }
+  80%  { transform:translate(-50%,-50%) rotate(90deg); }
+  100% { transform:translate(-50%,-50%) rotate(0deg); }
+}
+@keyframes or-hand {
+  0%   { opacity:0; transform:translate(-20%,10%) rotate(0deg); }
+  10%  { opacity:0.7; }
+  15%  { opacity:0.7; transform:translate(-20%,10%) rotate(0deg); }
+  55%  { opacity:0.7; transform:translate(-20%,10%) rotate(90deg); }
+  75%  { opacity:0; }
+  100% { opacity:0; transform:translate(-20%,10%) rotate(0deg); }
+}
+@keyframes or-arrow { 0%,20%{opacity:0;} 35%,55%{opacity:0.5;} 70%,100%{opacity:0;} }
+#overlay-rotate p { font-size:13px; color:#888; letter-spacing:0.03em; }
+
+/* ════════════════════════════════════════
+   MOBILE PORTRAIT
+   ════════════════════════════════════════ */
+@media screen and (max-width:900px) and (orientation:portrait) {
+  html,body { height:auto; overflow-y:auto; overflow-x:hidden; }
+  body { display:block; }
+  .bandeau { display:flex; flex-direction:column; height:auto; overflow:visible; border:none; }
+  nav { position:relative; top:auto; left:auto; order:1; width:100%; height:auto; padding:14px 16px 10px 16px; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; overflow:visible; background:#fff; }
+  .nom { font-size:26px; line-height:28px; margin-bottom:2px; }
+  .metier { font-size:11px; margin-bottom:10px; }
+  nav ul { display:flex; flex-wrap:wrap; gap:0 14px; }
+  nav ul li { margin-bottom:4px; }
+  nav ul li a { font-size:13px; }
+  .contenu { order:2; position:relative; top:auto; left:auto; right:auto; bottom:auto; padding:16px; overflow-y:visible; }
+  .contenu h1 { font-size:24px; line-height:26px; }
+  .sous-titre { margin-bottom:16px; }
+  .texte-legal { font-size:8px; padding:6px 16px; }
+}
+
+/* ════════════════════════════════════════
+   MOBILE PAYSAGE
+   ════════════════════════════════════════ */
+@media screen and (orientation:landscape) and (max-height:500px) {
+  html { height:100dvh; }
+  body { height:100dvh; overflow:hidden; flex-direction:column; justify-content:flex-start; }
+  .bandeau { flex:0 0 100dvh; height:100dvh; width:100vw; border:none; position:relative; overflow:hidden; }
+  nav { position:absolute; top:0; left:40px; width:212px; height:100%; background:rgba(255,255,255,0.95); padding-top:20px; padding-left:20px; padding-right:16px; padding-bottom:20px; z-index:10; overflow:hidden; }
+  .nom { font-size:20px; line-height:22px; margin-bottom:3px; }
+  .metier { font-size:10px; margin-bottom:18px; }
+  nav ul li { margin-bottom:10px; }
+  nav ul li a { font-size:12px; }
+  .contenu { left:220px; padding:20px 20px 20px 0; }
+  .contenu h1 { font-size:20px; line-height:22px; }
+  .texte-legal { display:none; }
+  /* Overlay affiché en paysage mobile */
+  #overlay-rotate { display:flex; }
 }
 </style>
-
-<meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/x-icon" href="RN.ico">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nicolas Robin — Mentions légales</title>
-
 </head>
 <body>
+
+<!-- Overlay rotation paysage mobile -->
+<div id="overlay-rotate">
+  <div class="scene">
+    <svg class="phone" width="22" height="36" viewBox="0 0 22 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="20" height="34" rx="3" stroke="#999" stroke-width="1.6"/>
+      <circle cx="11" cy="30" r="1.5" fill="#999"/>
+      <line x1="8" y1="4.5" x2="14" y2="4.5" stroke="#999" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    <svg class="hand" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 20 C4 20 2 16 2 12 L2 7 C2 5.9 2.9 5 4 5 C4.6 5 5.1 5.3 5.5 5.7 C5.8 4.7 6.7 4 7.8 4 C8.5 4 9.1 4.3 9.5 4.8 C9.9 4.3 10.5 4 11.2 4 C12.3 4 13.2 4.8 13.4 5.9 C13.8 5.4 14.4 5 15.1 5 C16.2 5 17 5.9 17 7 L17 13 C17 17 14 20 9 20Z" stroke="#bbb" stroke-width="1.3" fill="rgba(200,200,200,0.15)"/>
+    </svg>
+    <svg class="arrow" width="70" height="40" viewBox="0 0 70 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 30 Q10 8 35 5 Q58 2 62 18" stroke="#bbb" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="4 3"/>
+      <polyline points="58,10 62,18 54,19" stroke="#bbb" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <p><strong>Passez en mode portrait</strong></p>
+</div>
+
 <div class="bandeau">
   <nav>
     <div class="nom">Nicolas<br>Robin</div>
@@ -95,6 +158,7 @@ p{font-size:14px;line-height:1.8;color:#444;margin-bottom:8px;}
     <a href="contact.html" class="lien-contact">→ Formulaire de contact</a>
   </div>
 </div>
+
 <div class="texte-legal">
   ©2026 Nicolas Robin, tous droits réservés &nbsp;–&nbsp;
   Toute reproduction, représentation, modification, publication,
