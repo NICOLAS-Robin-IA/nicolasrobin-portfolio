@@ -26,21 +26,21 @@ nav ul li a { text-decoration:none; font-size:15px; font-weight:400; color:#aaa;
 nav ul li a:hover { color:#111; }
 nav ul li a.active { color:#111; font-weight:700; }
 
-.contenu { position:absolute; top:0; left:292px; right:0; bottom:0; overflow-y:auto; padding-top:70px; padding-right:48px; padding-bottom:20px; }
+.contenu { position:absolute; top:0; left:292px; right:0; bottom:0; overflow-y:auto; padding-top:100px; padding-right:48px; padding-bottom:20px; }
 .contenu h1 { font-size:40px; line-height:42px; font-weight:700; letter-spacing:-0.5px; color:#111; margin-bottom:0.1px; }
-.sous-titre { font-size:14px; font-weight:400; color:#111; margin-bottom:20px; }
+.sous-titre { font-size:14px; font-weight:400; color:#111; margin-bottom:40px; }
 
 .champ { margin-bottom:18px; }
 .champ label { display:block; font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:1px; color:#aaa; margin-bottom:5px; }
 .champ input, .champ textarea { width:100%; border:none; border-bottom:1px solid #e0e0e0; padding:6px 0; font-size:14px; font-family:inherit; color:#111; background:transparent; outline:none; transition:border-color 0.2s; }
 .champ input:focus, .champ textarea:focus { border-bottom-color:#111; }
-.champ textarea { resize:none; height:0px; }
+.champ textarea { resize:none; height:60px; }
 .anti-robot { margin-bottom:16px; display:flex; align-items:center; gap:12px; }
 .anti-robot span { font-size:13px; color:#aaa; white-space:nowrap; }
 .anti-robot input { width:50px; border:none; border-bottom:1px solid #e0e0e0; padding:5px 0; font-size:13px; font-family:inherit; text-align:center; background:transparent; outline:none; }
 .anti-robot input:focus { border-bottom-color:#111; }
 .erreur { display:none; font-size:11px; color:#c00; margin-top:4px; }
-.btn-envoyer { display:inline-block; margin-top:0.1px; padding:9px 24px; background:#111; color:#fff; font-size:12px; font-weight:500; letter-spacing:1px; border:none; cursor:pointer; font-family:inherit; transition:background 0.2s; }
+.btn-envoyer { display:inline-block; margin-top:6px; padding:9px 24px; background:#111; color:#fff; font-size:12px; font-weight:500; letter-spacing:1px; border:none; cursor:pointer; font-family:inherit; transition:background 0.2s; }
 .btn-envoyer:hover { background:#444; }
 .confirmation { display:none; margin-top:12px; font-size:13px; color:#aaa; }
 
@@ -52,7 +52,7 @@ nav ul li a.active { color:#111; font-weight:700; }
    ════════════════════════════════════════ */
 #overlay-rotate {
   display:none;
-  position:fixed; inset:0; z-index:20000;
+  position:fixed; inset:0; z-index:9; /* sous la nav (z-index:10) */
   background:#fff;
   flex-direction:column;
   align-items:center;
