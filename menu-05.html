@@ -95,6 +95,9 @@ nav ul li a.active { color:#111; font-weight:700; }
   .galerie-scroll { order:2; position:relative; width:100%; height:200px; overflow-x:scroll; overflow-y:hidden; }
   .galerie { height:200px; }
   .galerie img { height:200px; width:auto; }
+  .photo-wrap { height:200px; }
+  .photo-wrap img { height:200px; }
+  .photo-caption { font-size:10px; padding:4px 8px; max-width:200px; }
   .texte-legal { font-size:8px; padding:6px 16px; }
 
   /* Hint rotation — sous la galerie */
@@ -129,6 +132,8 @@ nav ul li a.active { color:#111; font-weight:700; }
   body { height:100dvh; overflow:hidden; flex-direction:column; justify-content:flex-start; }
   .bandeau { flex:0 0 100dvh; height:100dvh; width:100vw; border-top:none; border-bottom:none; position:relative; overflow:hidden; }
   .galerie img { height:100dvh; width:auto; }
+  .photo-wrap { height:100dvh; }
+  .photo-wrap img { height:100dvh; }
   nav { position:absolute; top:0; left:40px; width:212px; height:100%; display:flex; flex-direction:column; background:rgba(255,255,255,0.95); padding-top:20px; padding-left:20px; padding-right:16px; padding-bottom:20px; z-index:10; overflow:hidden; }
   .nom { font-size:20px; line-height:22px; margin-bottom:3px; }
   .metier { font-size:10px; margin-bottom:18px; }
@@ -204,8 +209,8 @@ var NB_PHOTOS = 21;
    ═══════════════════════════════════════════════════════ */
 var LEGENDES = {
   /* ↓↓↓ Ajouter vos légendes ici ↓↓↓ */
-  21:  { texte: 'Réalisation Studio Totem', lien: 'https://www.studiototem.net' },
-  20:  { texte: 'Réalisation Studio Totem', lien: 'https://www.studiototem.net' },
+  20: { texte: 'STUDIO TOTEM', lien: 'https://www.studiototem.net' },
+  21: { texte: 'STUDIO TOTEM', lien: 'https://www.studiototem.net' },
   /* ↑↑↑ Fin des légendes ↑↑↑ */
 };
 var gal  = document.getElementById('galerie');
