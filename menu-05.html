@@ -261,10 +261,10 @@ gs.addEventListener('wheel', function(e) { e.preventDefault(); gs.scrollLeft += 
 var drag = false, sx = 0, sl = 0;
 gs.addEventListener('mousedown', function(e) { if (e.button !== 0) return; drag = true; sx = e.pageX; sl = gs.scrollLeft; gs.style.cursor = "url('cursor-NR.png') 64 64,grabbing"; e.preventDefault(); });
 document.addEventListener('mouseup',   function()  { drag = false; gs.style.cursor = "url('cursor-NR.png') 64 64,grab"; });
-document.addEventListener('mousemove', function(e) { if (!drag) return; gs.scrollLeft = sl - (e.pageX - sx) * 1.2; });
+document.addEventListener('mousemove', function(e) { if (!drag) return; gs.scrollLeft = sl - (e.pageX - sx) * 1.8; });
 var tx = 0, tl = 0;
 gs.addEventListener('touchstart', function(e) { tx = e.touches[0].pageX; tl = gs.scrollLeft; }, { passive: true });
-gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 2.2; /* ←←← Multiplicateur touch — augmenter pour accélérer, diminuer pour ralentir [MT] */; }, { passive: true });
+gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 2; /* ←←← Multiplicateur touch — augmenter pour accélérer, diminuer pour ralentir [MT] */; }, { passive: true });
 
 var ov = document.getElementById('overlay-cr');
 document.addEventListener('contextmenu', function(e) {
