@@ -22,7 +22,7 @@ body { display:flex; flex-direction:column; height:100vh; overflow:hidden; justi
 
 /* BANDEAU PHOTOS — 549px : hauteur desktop */
 .bandeau { flex:0 0 549px; position:relative; overflow:hidden; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; }
-.galerie-scroll { position:absolute; inset:0; overflow-x:scroll; overflow-y:hidden; scroll-behavior:smooth; cursor:url('cursor-NR.png') 64 64,grab; scrollbar-width:none; -ms-overflow-style:none; }
+.galerie-scroll { position:absolute; inset:0; overflow-x:scroll; overflow-y:hidden; cursor:url('cursor-NR.png') 64 64,grab; scrollbar-width:none; -ms-overflow-style:none; }
 .galerie-scroll::-webkit-scrollbar { display:none; }
 .galerie { display:flex; flex-wrap:nowrap; height:100%; width:max-content; gap:2px; /* [G] espace entre photos */ background:#e0e0e0; }
 .galerie img { height:549px; width:auto; flex-shrink:0; display:block; user-select:none; -webkit-user-drag:none; }
@@ -259,7 +259,7 @@ document.addEventListener('mouseup',   function()  { drag = false; gs.style.curs
 document.addEventListener('mousemove', function(e) { if (!drag) return; gs.scrollLeft = sl - (e.pageX - sx) * 1.2; });
 var tx = 0, tl = 0;
 gs.addEventListener('touchstart', function(e) { tx = e.touches[0].pageX; tl = gs.scrollLeft; }, { passive: true });
-gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 1.2; }, { passive: true });
+gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 2.2; /* ←←← Multiplicateur touch — augmenter pour accélérer, diminuer pour ralentir [MT] */; }, { passive: true });
 
 var ov = document.getElementById('overlay-cr');
 document.addEventListener('contextmenu', function(e) {
