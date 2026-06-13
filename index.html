@@ -323,12 +323,12 @@ gs.addEventListener('mousedown', function(e) {
   e.preventDefault();
 });
 document.addEventListener('mouseup',   function()  { drag = false; gs.style.cursor = "url('cursor-NR.png') 64 64,grab"; });
-document.addEventListener('mousemove', function(e) { if (!drag) return; gs.scrollLeft = sl - (e.pageX - sx) * 1.2; });
+document.addEventListener('mousemove', function(e) { if (!drag) return; gs.scrollLeft = sl - (e.pageX - sx) * 1.8; });
 
 /* Swipe tactile */
 var tx = 0, tl = 0;
 gs.addEventListener('touchstart', function(e) { tx = e.touches[0].pageX; tl = gs.scrollLeft; }, { passive: true });
-gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 2.2; /* ←←← Multiplicateur touch — augmenter pour accélérer, diminuer pour ralentir [MT] */; }, { passive: true });
+gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 2; /* ←←← Multiplicateur touch — augmenter pour accélérer, diminuer pour ralentir [MT] */; }, { passive: true });
 
 /* Blocage clic droit + overlay copyright */
 var ov = document.getElementById('overlay-cr');
