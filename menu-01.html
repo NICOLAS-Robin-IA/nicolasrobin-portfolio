@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="RN.ico">
-<title>Nicolas Robin — Portrait</title>
+<title>Nicolas Robin â€” Portrait</title>
 <style>
-/* ── Polices locales ── */
+/* â”€â”€ Polices locales â”€â”€ */
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
 @font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
@@ -16,23 +16,23 @@
 html,body { width:100%; height:100%; font-family:'Space Grotesk','Helvetica Neue',sans-serif; background:#fff; color:#111; }
 body { display:flex; flex-direction:column; height:100vh; overflow:hidden; justify-content:center; }
 
-/* ── Galerie ── */
+/* â”€â”€ Galerie â”€â”€ */
 .galerie img { will-change:transform; transform:translateZ(0); }
 .hint-rotate { display:none; }
 
-/* BANDEAU PHOTOS — 549px : hauteur desktop */
+/* BANDEAU PHOTOS â€” 549px : hauteur desktop */
 .bandeau { flex:0 0 549px; position:relative; overflow:hidden; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; }
 .galerie-scroll { position:absolute; inset:0; overflow-x:scroll; overflow-y:hidden; cursor:url('cursor-NR.png') 64 64,grab; scrollbar-width:none; -ms-overflow-style:none; }
 .galerie-scroll::-webkit-scrollbar { display:none; }
 .galerie { display:flex; flex-wrap:nowrap; height:100%; width:max-content; gap:2px; /* [G] espace entre photos */ background:#e0e0e0; }
 .galerie img { height:549px; width:auto; flex-shrink:0; display:block; user-select:none; -webkit-user-drag:none; }
 
-/* ════════════════════════════════════════
-   NAV — superposée sur les photos (desktop)
-   ← left:40px          Déplace vers la droite  [M-L]
-   ← width:212px        Largeur bloc menu        [M-C]
-   ← padding-top:100px  Marge haute              [M-A]
-   ════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   NAV â€” superposÃ©e sur les photos (desktop)
+   â† left:40px          DÃ©place vers la droite  [M-L]
+   â† width:212px        Largeur bloc menu        [M-C]
+   â† padding-top:100px  Marge haute              [M-A]
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 nav {
   position:absolute;
   top:0; left:40px;            /* [M-L] */
@@ -49,11 +49,11 @@ nav {
 .nom {
   font-size:40px; line-height:42px; font-weight:700;
   letter-spacing:-0.5px; color:#111;
-  margin-bottom:0.1px;         /* [M-B] Robin → Photographe */
+  margin-bottom:0.1px;         /* [M-B] Robin â†’ Photographe */
 }
 .metier {
   font-size:14px; font-weight:400; color:#111;
-  margin-bottom:60px;          /* [M-C] Photographe → liens */
+  margin-bottom:60px;          /* [M-C] Photographe â†’ liens */
 }
 nav ul { list-style:none; }
 nav ul li { margin-bottom:1px; }  /* [M-D] entre liens */
@@ -61,27 +61,27 @@ nav ul li a { text-decoration:none; font-size:15px; font-weight:400; color:#aaa;
 nav ul li a:hover  { color:#111; }
 nav ul li a.active { color:#111; font-weight:700; }
 
-/* ── Texte légal ── */
+/* â”€â”€ Texte lÃ©gal â”€â”€ */
 .texte-legal { flex:0 0 auto; padding:8px 68px; /* [M-E] */ font-size:9px; color:#bbb; line-height:1.4; }
 
-/* ── Overlay copyright ── */
+/* â”€â”€ Overlay copyright â”€â”€ */
 #overlay-cr { display:none; position:fixed; z-index:9999; background:#fff; color:#111; font-size:13px; line-height:1.7; padding:14px 20px; border:1px solid #ddd; box-shadow:0 2px 16px rgba(0,0,0,0.1); pointer-events:none; white-space:nowrap; }
 
-/* ════════════════════════════════════════
-   LÉGENDES SOUS PHOTOS (texte + lien optionnel)
-   ← font-size  : taille du texte   [L-SIZE]
-   ← color      : couleur           [L-COLOR]
-   ← padding    : marges internes   [L-PAD]
-   ════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LÃ‰GENDES SOUS PHOTOS (texte + lien optionnel)
+   â† font-size  : taille du texte   [L-SIZE]
+   â† color      : couleur           [L-COLOR]
+   â† padding    : marges internes   [L-PAD]
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .photo-wrap { position:relative; height:549px; flex-shrink:0; display:inline-flex; }
 .photo-wrap img { height:549px; width:auto; display:block; }
 .photo-caption { position:absolute; bottom:0; left:0; padding:6px 10px; /* [L-PAD] */ font-size:11px; /* [L-SIZE] */ color:#fff; /* [L-COLOR] */ background:rgba(0,0,0,0.38); line-height:1.4; pointer-events:auto; max-width:280px; }
 .photo-caption a { color:#fff; text-decoration:underline; text-underline-offset:2px; opacity:0.85; transition:opacity 0.15s; }
 .photo-caption a:hover { opacity:1; }
 
-/* ════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    MOBILE PORTRAIT
-   ════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (max-width:900px) and (orientation:portrait) {
   html,body { height:auto; overflow-y:auto; overflow-x:hidden; }
   body { display:block; justify-content:unset; overflow:hidden; }
@@ -97,7 +97,7 @@ nav ul li a.active { color:#111; font-weight:700; }
   .galerie img { height:200px; width:auto; }
   .texte-legal { font-size:8px; padding:6px 16px; }
 
-  /* Hint rotation — sous la galerie */
+  /* Hint rotation â€” sous la galerie */
   .hint-rotate { order:3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; height:110px; border-top:1px solid #e0e0e0; background:#fff; font-size:11px; color:#888; letter-spacing:0.03em; }
   .hint-rotate .scene { position:relative; width:80px; /* [A-SIZE] */ height:44px; /* [A-SIZE] */ }
   .hint-rotate .phone { position:absolute; left:50%; top:50%; transform-origin:center center; transform:translate(-50%,-50%) rotate(0deg); animation:phone-tilt 2.8s ease-in-out infinite; }
@@ -121,9 +121,9 @@ nav ul li a.active { color:#111; font-weight:700; }
   @keyframes arrow-fade { 0%,20% { opacity:0; } 35%,55% { opacity:0.5; } 70%,100% { opacity:0; } }
 }
 
-/* ════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    MOBILE PAYSAGE
-   ════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (orientation:landscape) and (max-height:500px) {
   html { height:100dvh; }
   body { height:100dvh; overflow:hidden; flex-direction:column; justify-content:flex-start; }
@@ -132,7 +132,7 @@ nav ul li a.active { color:#111; font-weight:700; }
   nav { position:absolute; top:0; left:40px; width:212px; height:100%; display:flex; flex-direction:column; background:rgba(255,255,255,0.95); padding-top:20px; padding-left:20px; padding-right:16px; padding-bottom:20px; z-index:10; overflow:hidden; }
   .nom { font-size:20px; line-height:22px; margin-bottom:3px; }
   .metier { font-size:10px; margin-bottom:18px; }
-  nav ul li { margin-bottom:0,8px; } /* [M-D] espace entre liens paysage — modifier ici */
+  nav ul li { margin-bottom:0,8px; } /* [M-D] espace entre liens paysage â€” modifier ici */
   nav ul li a { font-size:12px; }
   .texte-legal { display:none; }
 }
@@ -179,33 +179,33 @@ nav ul li a.active { color:#111; font-weight:700; }
 </div>
 
 <div class="texte-legal">
-  ©2026 Nicolas Robin, tous droits réservés &nbsp;–&nbsp;
-  Toute reproduction, représentation, modification, publication,
-  adaptation totale ou partielle des éléments du site,
-  quel que soit le moyen ou le procédé utilisé, est interdite. &nbsp;–&nbsp;
-  <a href="mentions-legales.html" style="color:#bbb;text-decoration:none;">Mentions légales</a>
+  Â©2026 Nicolas Robin, tous droits rÃ©servÃ©s &nbsp;â€“&nbsp;
+  Toute reproduction, reprÃ©sentation, modification, publication,
+  adaptation totale ou partielle des Ã©lÃ©ments du site,
+  quel que soit le moyen ou le procÃ©dÃ© utilisÃ©, est interdite. &nbsp;â€“&nbsp;
+  <a href="mentions-legales.html" style="color:#bbb;text-decoration:none;">Mentions lÃ©gales</a>
 </div>
 
-<div id="overlay-cr">This photo is Copyright © 2026<br>Nicolas Robin. All rights reserved.</div>
+<div id="overlay-cr">This photo is Copyright Â© 2026<br>Nicolas Robin. All rights reserved.</div>
 
 <script>
-/* ═══════════════════════════════════════════════════════
-   ←←← À ADAPTER PAR PAGE ←←←
-   ═══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â†â†â† Ã€ ADAPTER PAR PAGE â†â†â†
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 var DOSSIER   = 'menu-01';
 var PREFIXE   = 'menu1';
 var NB_PHOTOS = 17;
 
-/* ═══════════════════════════════════════════════════════
-   LÉGENDES — texte et/ou lien sous certaines photos
-   ───────────────────────────────────────────────────────
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LÃ‰GENDES â€” texte et/ou lien sous certaines photos
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    3:  { texte: 'Nom du projet', lien: 'https://www.exemple.com' },
    7:  { texte: 'Texte sans lien' },
-   ═══════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 var LEGENDES = {
-  /* ↓↓↓ Ajouter vos légendes ici ↓↓↓ */
+  /* â†“â†“â†“ Ajouter vos lÃ©gendes ici â†“â†“â†“ */
 
-  /* ↑↑↑ Fin des légendes ↑↑↑ */
+  /* â†‘â†‘â†‘ Fin des lÃ©gendes â†‘â†‘â†‘ */
 };
 
 var gal  = document.getElementById('galerie');
@@ -259,7 +259,7 @@ document.addEventListener('mouseup',   function()  { drag = false; gs.style.curs
 document.addEventListener('mousemove', function(e) { if (!drag) return; gs.scrollLeft = sl - (e.pageX - sx) * 1.8; });
 var tx = 0, tl = 0;
 gs.addEventListener('touchstart', function(e) { tx = e.touches[0].pageX; tl = gs.scrollLeft; }, { passive: true });
-gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 2; /* ←←← Multiplicateur touch — augmenter pour accélérer, diminuer pour ralentir [MT] */; }, { passive: true });
+gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 2; /* â†â†â† Multiplicateur touch â€” augmenter pour accÃ©lÃ©rer, diminuer pour ralentir [MT] */; }, { passive: true });
 
 var ov = document.getElementById('overlay-cr');
 document.addEventListener('contextmenu', function(e) {
@@ -276,3 +276,5 @@ document.addEventListener('click', function() { ov.style.display = 'none'; });
 </script>
 </body>
 </html>
+
+
