@@ -1,3 +1,4 @@
+﻿<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -194,7 +195,7 @@ nav ul li a.active { color:#111; font-weight:700; }
    ═══════════════════════════════════════════════════════ */
 var DOSSIER   = 'menu-04';
 var PREFIXE   = 'menu4';
-var NB_PHOTOS = 22;
+var NB_PHOTOS = 23;
 
 /* ═══════════════════════════════════════════════════════
    LÉGENDES — texte et/ou lien sous certaines photos
@@ -276,3 +277,286 @@ document.addEventListener('click', function() { ov.style.display = 'none'; });
 </script>
 </body>
 </html>
+=======
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="RN.ico">
+<title>Nicolas Robin â€” Tournage</title>
+<style>
+/* â”€â”€ Polices locales â”€â”€ */
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Space Grotesk'; src:url('fonts/SpaceGrotesk-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html,body { width:100%; height:100%; font-family:'Space Grotesk','Helvetica Neue',sans-serif; background:#fff; color:#111; }
+body { display:flex; flex-direction:column; height:100vh; overflow:hidden; justify-content:center; }
+
+/* â”€â”€ Galerie â”€â”€ */
+.galerie img { will-change:transform; transform:translateZ(0); }
+.hint-rotate { display:none; }
+
+/* BANDEAU PHOTOS â€” 549px : hauteur desktop */
+.bandeau { flex:0 0 549px; position:relative; overflow:hidden; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; }
+.galerie-scroll { position:absolute; inset:0; overflow-x:scroll; overflow-y:hidden; cursor:url('cursor-NR.png') 64 64,grab; scrollbar-width:none; -ms-overflow-style:none; }
+.galerie-scroll::-webkit-scrollbar { display:none; }
+.galerie { display:flex; flex-wrap:nowrap; height:100%; width:max-content; gap:2px; /* [G] espace entre photos */ background:#e0e0e0; }
+.galerie img { height:549px; width:auto; flex-shrink:0; display:block; user-select:none; -webkit-user-drag:none; }
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   NAV â€” superposÃ©e sur les photos (desktop)
+   â† left:40px          DÃ©place vers la droite  [M-L]
+   â† width:212px        Largeur bloc menu        [M-C]
+   â† padding-top:100px  Marge haute              [M-A]
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+nav {
+  position:absolute;
+  top:0; left:40px;            /* [M-L] */
+  width:212px;                 /* [M-C] */
+  height:100%;
+  background:rgba(255,255,255,0.95);
+  padding-top:100px;           /* [M-A] */
+  padding-left:20px;
+  padding-right:16px;
+  padding-bottom:20px;
+  display:flex; flex-direction:column;
+  z-index:10; overflow:hidden;
+}
+.nom {
+  font-size:40px; line-height:42px; font-weight:700;
+  letter-spacing:-0.5px; color:#111;
+  margin-bottom:0.1px;         /* [M-B] Robin â†’ Photographe */
+}
+.metier {
+  font-size:14px; font-weight:400; color:#111;
+  margin-bottom:60px;          /* [M-C] Photographe â†’ liens */
+}
+nav ul { list-style:none; }
+nav ul li { margin-bottom:1px; }  /* [M-D] entre liens */
+nav ul li a { text-decoration:none; font-size:15px; font-weight:400; color:#aaa; transition:color 0.15s; }
+nav ul li a:hover  { color:#111; }
+nav ul li a.active { color:#111; font-weight:700; }
+
+/* â”€â”€ Texte lÃ©gal â”€â”€ */
+.texte-legal { flex:0 0 auto; padding:8px 68px; /* [M-E] */ font-size:9px; color:#bbb; line-height:1.4; }
+
+/* â”€â”€ Overlay copyright â”€â”€ */
+#overlay-cr { display:none; position:fixed; z-index:9999; background:#fff; color:#111; font-size:13px; line-height:1.7; padding:14px 20px; border:1px solid #ddd; box-shadow:0 2px 16px rgba(0,0,0,0.1); pointer-events:none; white-space:nowrap; }
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LÃ‰GENDES SOUS PHOTOS (texte + lien optionnel)
+   â† font-size  : taille du texte   [L-SIZE]
+   â† color      : couleur           [L-COLOR]
+   â† padding    : marges internes   [L-PAD]
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.photo-wrap { position:relative; height:549px; flex-shrink:0; display:inline-flex; }
+.photo-wrap img { height:549px; width:auto; display:block; }
+.photo-caption { position:absolute; bottom:0; left:0; padding:6px 10px; /* [L-PAD] */ font-size:11px; /* [L-SIZE] */ color:#fff; /* [L-COLOR] */ background:rgba(0,0,0,0.38); line-height:1.4; pointer-events:auto; max-width:280px; }
+.photo-caption a { color:#fff; text-decoration:underline; text-underline-offset:2px; opacity:0.85; transition:opacity 0.15s; }
+.photo-caption a:hover { opacity:1; }
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MOBILE PORTRAIT
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media screen and (max-width:900px) and (orientation:portrait) {
+  html,body { height:auto; overflow-y:auto; overflow-x:hidden; }
+  body { display:block; justify-content:unset; overflow:hidden; }
+  .bandeau { display:flex; flex-direction:column; height:auto; position:relative; overflow:visible; border:none; }
+  nav { position:relative; top:auto; left:auto; order:1; width:100%; height:auto; padding:14px 16px 10px 16px; border-top:1px solid #e0e0e0; border-bottom:1px solid #e0e0e0; overflow:visible; background:#fff; }
+  .nom { font-size:26px; line-height:28px; margin-bottom:2px; }
+  .metier { font-size:11px; margin-bottom:10px; }
+  nav ul { display:flex; flex-wrap:wrap; gap:0 14px; }
+  nav ul li { margin-bottom:4px; }
+  nav ul li a { font-size:13px; }
+  .galerie-scroll { order:2; position:relative; width:100%; height:200px; overflow-x:scroll; overflow-y:hidden; }
+  .galerie { height:200px; }
+  .galerie img { height:200px; width:auto; }
+  .texte-legal { font-size:8px; padding:6px 16px; }
+
+  /* Hint rotation â€” sous la galerie */
+  .hint-rotate { order:3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; height:110px; border-top:1px solid #e0e0e0; background:#fff; font-size:11px; color:#888; letter-spacing:0.03em; }
+  .hint-rotate .scene { position:relative; width:80px; /* [A-SIZE] */ height:44px; /* [A-SIZE] */ }
+  .hint-rotate .phone { position:absolute; left:50%; top:50%; transform-origin:center center; transform:translate(-50%,-50%) rotate(0deg); animation:phone-tilt 2.8s ease-in-out infinite; }
+  .hint-rotate .hand  { position:absolute; left:50%; top:50%; transform-origin:center center; transform:translate(-20%,10%) rotate(0deg); animation:hand-tilt 2.8s ease-in-out infinite; opacity:0; }
+  .hint-rotate .arrow { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); opacity:0; animation:arrow-fade 2.8s ease-in-out infinite; }
+  @keyframes phone-tilt {
+    0%   { transform:translate(-50%,-50%) rotate(0deg); }
+    15%  { transform:translate(-50%,-50%) rotate(0deg); }
+    55%  { transform:translate(-50%,-50%) rotate(-90deg); }
+    80%  { transform:translate(-50%,-50%) rotate(-90deg); }
+    100% { transform:translate(-50%,-50%) rotate(0deg); }
+  }
+  @keyframes hand-tilt {
+    0%   { opacity:0; transform:translate(-20%,10%) rotate(0deg); }
+    10%  { opacity:0.7; }
+    15%  { opacity:0.7; transform:translate(-20%,10%) rotate(0deg); }
+    55%  { opacity:0.7; transform:translate(-20%,10%) rotate(-90deg); }
+    75%  { opacity:0; }
+    100% { opacity:0; transform:translate(-20%,10%) rotate(0deg); }
+  }
+  @keyframes arrow-fade { 0%,20% { opacity:0; } 35%,55% { opacity:0.5; } 70%,100% { opacity:0; } }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MOBILE PAYSAGE
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+@media screen and (orientation:landscape) and (max-height:500px) {
+  html { height:100dvh; }
+  body { height:100dvh; overflow:hidden; flex-direction:column; justify-content:flex-start; }
+  .bandeau { flex:0 0 100dvh; height:100dvh; width:100vw; border-top:none; border-bottom:none; position:relative; overflow:hidden; }
+  .galerie img { height:100dvh; width:auto; }
+  nav { position:absolute; top:0; left:40px; width:212px; height:100%; display:flex; flex-direction:column; background:rgba(255,255,255,0.95); padding-top:20px; padding-left:20px; padding-right:16px; padding-bottom:20px; z-index:10; overflow:hidden; }
+  .nom { font-size:20px; line-height:22px; margin-bottom:3px; }
+  .metier { font-size:10px; margin-bottom:18px; }
+  nav ul li { margin-bottom:0,8px; } /* [M-D] espace entre liens paysage â€” modifier ici */
+  nav ul li a { font-size:12px; }
+  .texte-legal { display:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="bandeau">
+  <div class="galerie-scroll" id="gs">
+    <div class="galerie" id="galerie"></div>
+  </div>
+  <nav>
+    <div class="nom">Nicolas<br>Robin</div>
+    <div class="metier">Photographe</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu-01.html">Portrait</a></li>
+      <li><a href="menu-02.html">Industries</a></li>
+      <li><a href="menu-03.html">Chantier</a></li>
+      <li><a href="menu-04.html" class="active">Tournage</a></li>
+      <li><a href="menu-05.html">Architecture</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hint rotation mobile portrait -->
+  <div class="hint-rotate">
+    <div class="scene">
+      <svg class="phone" width="22" height="36" viewBox="0 0 22 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="20" height="34" rx="3" stroke="#999" stroke-width="1.6"/>
+        <circle cx="11" cy="30" r="1.5" fill="#999"/>
+        <line x1="8" y1="4.5" x2="14" y2="4.5" stroke="#999" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <svg class="hand" width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 20 C4 20 2 16 2 12 L2 7 C2 5.9 2.9 5 4 5 C4.6 5 5.1 5.3 5.5 5.7 C5.8 4.7 6.7 4 7.8 4 C8.5 4 9.1 4.3 9.5 4.8 C9.9 4.3 10.5 4 11.2 4 C12.3 4 13.2 4.8 13.4 5.9 C13.8 5.4 14.4 5 15.1 5 C16.2 5 17 5.9 17 7 L17 13 C17 17 14 20 9 20Z" stroke="#bbb" stroke-width="1.3" fill="rgba(200,200,200,0.15)"/>
+      </svg>
+      <svg class="arrow" width="70" height="40" viewBox="0 0 70 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 30 Q10 8 35 5 Q58 2 62 18" stroke="#bbb" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="4 3"/>
+        <polyline points="58,10 62,18 54,19" stroke="#bbb" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span><strong>Passez en mode paysage pour voir les photos</strong></span>
+  </div>
+</div>
+
+<div class="texte-legal">
+  Â©2026 Nicolas Robin, tous droits rÃ©servÃ©s &nbsp;â€“&nbsp;
+  Toute reproduction, reprÃ©sentation, modification, publication,
+  adaptation totale ou partielle des Ã©lÃ©ments du site,
+  quel que soit le moyen ou le procÃ©dÃ© utilisÃ©, est interdite. &nbsp;â€“&nbsp;
+  <a href="mentions-legales.html" style="color:#bbb;text-decoration:none;">Mentions lÃ©gales</a>
+</div>
+
+<div id="overlay-cr">This photo is Copyright Â© 2026<br>Nicolas Robin. All rights reserved.</div>
+
+<script>
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   â†â†â† Ã€ ADAPTER PAR PAGE â†â†â†
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+var DOSSIER   = 'menu-04';
+var PREFIXE   = 'menu4';
+var NB_PHOTOS = 23;
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LÃ‰GENDES â€” texte et/ou lien sous certaines photos
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   3:  { texte: 'Nom du projet', lien: 'https://www.exemple.com' },
+   7:  { texte: 'Texte sans lien' },
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+var LEGENDES = {
+  /* â†“â†“â†“ Ajouter vos lÃ©gendes ici â†“â†“â†“ */
+
+  /* â†‘â†‘â†‘ Fin des lÃ©gendes â†‘â†‘â†‘ */
+};
+
+var gal  = document.getElementById('galerie');
+var imgs = [];
+
+for (var i = 1; i <= NB_PHOTOS; i++) {
+  var img = document.createElement('img');
+  img.src           = DOSSIER + '/' + PREFIXE + '-' + (i < 10 ? '0' : '') + i + '.webp';
+  img.alt           = PREFIXE + ' ' + i;
+  img.draggable     = false;
+  img.loading       = 'lazy';
+  img.decoding      = 'async';
+  img.fetchPriority = 'low';
+  img.dataset.index = i;
+
+  if (LEGENDES[i]) {
+    var wrap = document.createElement('div');
+    wrap.className = 'photo-wrap';
+    wrap.appendChild(img);
+    var cap = document.createElement('div');
+    cap.className = 'photo-caption';
+    if (LEGENDES[i].lien) {
+      var a = document.createElement('a');
+      a.href = LEGENDES[i].lien; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      a.textContent = LEGENDES[i].texte;
+      cap.appendChild(a);
+    } else { cap.textContent = LEGENDES[i].texte; }
+    wrap.appendChild(cap);
+    gal.appendChild(wrap);
+  } else { gal.appendChild(img); }
+  imgs.push(img);
+}
+
+var gs = document.getElementById('gs');
+
+var observer = new IntersectionObserver(function(entries) {
+  for (var k = 0; k < entries.length; k++) {
+    if (entries[k].isIntersecting) {
+      entries[k].target.loading = 'eager';
+      entries[k].target.fetchPriority = 'high';
+      observer.unobserve(entries[k].target);
+    }
+  }
+}, { root: gs, rootMargin: '350px', threshold: 0.1 });
+imgs.forEach(function(img) { observer.observe(img); });
+
+gs.addEventListener('wheel', function(e) { e.preventDefault(); gs.scrollLeft += e.deltaY * 2.5; }, { passive: false });
+var drag = false, sx = 0, sl = 0;
+gs.addEventListener('mousedown', function(e) { if (e.button !== 0) return; drag = true; sx = e.pageX; sl = gs.scrollLeft; gs.style.cursor = "url('cursor-NR.png') 64 64,grabbing"; e.preventDefault(); });
+document.addEventListener('mouseup',   function()  { drag = false; gs.style.cursor = "url('cursor-NR.png') 64 64,grab"; });
+document.addEventListener('mousemove', function(e) { if (!drag) return; gs.scrollLeft = sl - (e.pageX - sx) * 1.8; });
+var tx = 0, tl = 0;
+gs.addEventListener('touchstart', function(e) { tx = e.touches[0].pageX; tl = gs.scrollLeft; }, { passive: true });
+gs.addEventListener('touchmove',  function(e) { gs.scrollLeft = tl - (e.touches[0].pageX - tx) * 2; /* â†â†â† Multiplicateur touch â€” augmenter pour accÃ©lÃ©rer, diminuer pour ralentir [MT] */; }, { passive: true });
+
+var ov = document.getElementById('overlay-cr');
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  if (e.target.tagName === 'IMG') {
+    ov.style.display = 'block';
+    var x = e.clientX + 12, y = e.clientY + 12;
+    if (x + 340 > window.innerWidth)  x = e.clientX - 350;
+    if (y + 80  > window.innerHeight) y = e.clientY - 90;
+    ov.style.left = x + 'px'; ov.style.top = y + 'px';
+  } else { ov.style.display = 'none'; }
+});
+document.addEventListener('click', function() { ov.style.display = 'none'; });
+</script>
+</body>
+</html>
+
+
+>>>>>>> Stashed changes
+
